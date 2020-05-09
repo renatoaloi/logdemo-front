@@ -7,15 +7,15 @@
                           <tr>
                             <th>Date/Hour</th>
                             <th>File name</th>
-                            <th>Error Status</th>
+                            <th>Upload Status</th>
                             <th>Processing Status</th>
                             <th></th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let file of files">
                           <tr>
-                            <td>2012/01/01</td>
-                            <td>sdfd.xls</td>
+                            <td>{{file.dateCreated|date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                            <td>{{file.fileName}}</td>
                             <td><span class="badge badge-secondary">N/A</span></td>
                             <td><span class="badge badge-warning">Processing...</span></td>
                             <td><button class="btn btn-small btn-info">View</button></td>

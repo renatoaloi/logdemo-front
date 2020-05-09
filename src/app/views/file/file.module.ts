@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ManageComponent } from './manage.component';
+
 
 // File Routing
 import { FileRoutingModule } from './file-routing.module';
@@ -14,7 +16,8 @@ import { FileRoutingModule } from './file-routing.module';
   imports: [
     CommonModule,
     FileRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class FileModule { }
