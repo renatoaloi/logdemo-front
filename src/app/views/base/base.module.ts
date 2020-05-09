@@ -73,8 +73,7 @@ import { BaseRoutingModule } from './base-routing.module';
     PaginationsComponent,
     PopoversComponent,
     ProgressComponent,
-    TooltipsComponent,
-    NavbarsComponent
+    TooltipsComponent
   ]
 })
 export class BaseModule { }
