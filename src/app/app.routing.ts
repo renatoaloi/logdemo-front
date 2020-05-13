@@ -57,6 +57,10 @@ export const routes: Routes = [
       {
         path: 'file',
         loadChildren: () => import('./views/file/file.module').then(m => m.FileModule)
+      },
+      {
+        path: 'log',
+        loadChildren: () => import('./views/log/log.module').then(m => m.LogModule)
       }
     ]
   },

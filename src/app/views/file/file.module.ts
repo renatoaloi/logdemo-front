@@ -5,27 +5,25 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ManageComponent } from './manage/manage.component';
-import { ModalModule } from "ngx-bootstrap/modal";
 
 // File Routing
 import { FileRoutingModule } from './file-routing.module';
 import { UploadComponent } from './upload/upload.component';
-import { FormComponent } from './form/form.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
     ManageComponent,
-    UploadComponent,
-    FormComponent
+    UploadComponent
   ],
   imports: [
     CommonModule,
     FileRoutingModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot(),
     NotificationsModule,
-    ModalModule
+    ModalModule.forRoot()
   ]
 })
 export class FileModule { }

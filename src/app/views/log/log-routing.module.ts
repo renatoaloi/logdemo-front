@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { FormComponent } from './form/form.component';
 import { ManageComponent } from './manage/manage.component';
-import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'File'
+      title: 'Log'
     },
     children: [
       {
@@ -23,10 +23,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'upload',
-        component: UploadComponent,
+        path: 'form',
+        component: FormComponent,
         data: {
-          title: 'Upload'
+          title: 'Form'
         }
       }
     ]
@@ -37,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FileRoutingModule {}
+export class LogRoutingModule {}
