@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ManageComponent } from './manage.component';
+import { ManageComponent } from './manage/manage.component';
+import { UploadComponent } from './upload/upload.component';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,20 @@ const routes: Routes = [
         component: ManageComponent,
         data: {
           title: 'Manage'
+        }
+      },
+      {
+        path: 'upload',
+        component: UploadComponent,
+        data: {
+          title: 'Upload'
+        }
+      },
+      {
+        path: 'form',
+        component: FormComponent,
+        data: {
+          title: 'Form'
         }
       }
     ]

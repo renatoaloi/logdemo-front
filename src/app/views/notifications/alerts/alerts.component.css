@@ -1,0 +1,21 @@
+.alert-md-success {
+  background-color: #009688;
+  border-color: #00695C;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.alert-md-danger {
+  background-color: #009688;
+  border-color: #00695C;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+
+.alert-md-color {
+  background-color: #7B1FA2;
+  border-color: #4A148C;
+  color: #fff;
+  margin-bottom: 0;
+}

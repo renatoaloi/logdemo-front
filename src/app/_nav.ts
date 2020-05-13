@@ -30,7 +30,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'New',
-    url: '/theme/colors',
+    url: '/file/form',
     icon: 'icon-plus',
     badge: {
       variant: 'success',

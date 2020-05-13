@@ -1,3 +1,4 @@
+import { NotificationsModule } from './views/notifications/notifications.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FileModule } from './views/file/file.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -57,7 +58,8 @@ import { ChartsModule } from 'ng2-charts';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    NotificationsModule
   ],
   declarations: [
     AppComponent,
