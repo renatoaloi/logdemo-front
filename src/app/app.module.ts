@@ -42,6 +42,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { ChartsModule } from 'ng2-charts';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
-    NotificationsModule
+    NotificationsModule,
+    NgxPaginationModule
   ],
   declarations: [
     AppComponent,

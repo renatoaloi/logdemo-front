@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -9,7 +10,9 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class ManageComponent implements OnInit {
   public files;
   public file;
-  public size;
+  public page = 0;
+  public size = 0;
+  public pageSize = 10;
 
   @ViewChild('modalViewLabel') public modalViewLabel: ModalDirective;
 
@@ -28,13 +31,14 @@ export class ManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getList();
+    this.getList(this.page, this.pageSize);
   }
 
-  getList() {
-    this.api.getList().subscribe(
+  getList(page, pageSize) {
+    this.api.getPage(page, pageSize).subscribe(
       (data) => {
         this.files = data;
+        this.size = data.length;
       },
       (err) => console.error(err),
       () => {
@@ -44,10 +48,15 @@ export class ManageComponent implements OnInit {
   }
 
   onNext() {
-
+    if (this.page <= this.size / this.pageSize) {
+      this.getList(++this.page, this.pageSize);
+    }
   }
 
   onPrev() {
-
+    if (this.page > 0) {
+      this.getList(--this.page, this.pageSize);
+    }
   }
+
 }

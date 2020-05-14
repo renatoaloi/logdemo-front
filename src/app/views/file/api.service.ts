@@ -10,8 +10,12 @@ import { catchError, retry, take, map } from 'rxjs/operators';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getList() {
-    return this.http.get('/api/file/list');
+  getList(): Observable<any> {
+    return this.http.get<any>('/api/file/list');
+  }
+
+  getPage(page, size): Observable<any> {
+    return this.http.get<any>('/api/file/page/' + page + '/' + size);
   }
 
   get(id: BigInteger) {
