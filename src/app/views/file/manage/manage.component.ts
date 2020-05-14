@@ -32,17 +32,6 @@ export class ManageComponent implements OnInit {
   }
 
   getList() {
-    this.api.getCount().subscribe(
-      (data) => {
-        console.log('data', data);
-        this.size = JSON.parse(data);
-      },
-      (err) => console.error(err),
-      () => {
-        console.log('DONE!', this.files);
-      }
-    );
-
     this.api.getList().subscribe(
       (data) => {
         this.files = data;
