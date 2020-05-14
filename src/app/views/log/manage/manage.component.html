@@ -1,1 +1,125 @@
-<p>manage works!</p>
+<div class="col-lg-12 animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Log Manager
+    </div>
+    <div class="card-body">
+      <table class="table table-responsive-sm table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Entry Date</th>
+            <th scope="col">HTTP Method</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Return Code</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of logs">
+            <td>{{ log.entryDate | date: "dd/MM/yyyy" }}</td>
+            <td>{{ log.httpMethod }}</td>
+            <td>{{ log.ipAddress }}</td>
+            <td>{{ log.returnCode }}</td>
+            <td>
+              <button
+                class="btn btn-small btn-primary"
+                value="{{ log.id }}"
+                data-toggle="modal"
+                (click)="onView($event.target.value)"
+                #B
+              >
+                View
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pagination">
+        <li class="page-item">
+          <button class="page-link" (click)="onPrev()" *ngIf="page > 0" >Prev</button>
+        </li>
+        <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li> -->
+        <li class="page-item">
+          <button class="page-link" (click)="onNext()" *ngIf="page <= size / pageSize" >Next</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div
+  bsModal
+  #modalViewLabel="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Log detail #{{ log ? log.id : "--" }}</h4>
+        <button
+          type="button"
+          class="close"
+          (click)="modalViewLabel.hide()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-responsive-sm">
+          <tbody>
+            <tr>
+              <th role="row">Entry date</th>
+              <td>
+                <span>{{ log ? log.entryDate : "--" }}</span>
+              </td>
+            </tr>
+            <tr>
+              <th role="row">Http method date</th>
+              <td>
+                <span>{{ log ? log.httpMethod : "--" }}</span>
+              </td>
+            </tr>
+            <tr>
+              <th role="row">Ip address</th>
+              <td>
+                <span>{{ log ? log.ipAddress : "--" }}</span>
+              </td>
+            </tr>
+            <tr>
+              <th role="row">Return code</th>
+              <td>
+                <span>{{ log ? log.returnCode : "--" }}</span>
+              </td>
+            </tr>
+            <tr>
+              <th role="row">Browser detail</th>
+              <td style="word-break: break-all;">
+                <span>{{ log ? log.browserDetail : "--" }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modalViewLabel.hide()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

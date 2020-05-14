@@ -1,9 +1,70 @@
-<div class="col-lg-12 animated fadeIn">
+<div class="col-lg-6 animated fadeIn">
   <div class="card">
-    <div class="card-header">
-      <i class="fa fa-align-justify"></i> New File
-    </div>
+    <div class="card-header"><i class="fa fa-align-justify"></i> New File</div>
     <div class="card-body">
+      <form #F="ngForm" (ngSubmit)="submitMethod(F)">
+        <div
+          class="form-group"
+          [class.has-error]="!entryDate.valid && entryDate.touched"
+        >
+          <label for="entryDate">Entry Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="entryDate"
+            ngModel
+            name="entryDate"
+            required
+            #entryDate="ngModel"
+          />
+          <small
+            *ngIf="!entryDate.valid && entryDate.touched"
+            class="form-text alert alert-danger"
+            >Entry date field is mandatory...</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="httpMethod">HTTP Method</label>
+          <input
+            type="text"
+            class="form-control"
+            id="httpMethod"
+            ngModel
+            name="httpMethod"
+          />
+        </div>
+        <div class="form-group">
+          <label for="ipAddress">IP Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ipAddress"
+            ngModel
+            name="ipAddress"
+          />
+        </div>
+        <div class="form-group">
+          <label for="returnCode">Return Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="returnCode"
+            ngModel
+            name="returnCode"
+          />
+        </div>
+        <div class="form-group">
+          <label for="browserDetail">Browser Detail</label>
+          <input
+            type="text"
+            class="form-control"
+            id="browserDetail"
+            ngModel
+            name="browserDetail"
+          />
+        </div>
+        <button [disabled]="!F.valid" type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>

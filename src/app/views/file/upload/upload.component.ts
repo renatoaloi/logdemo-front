@@ -1,18 +1,18 @@
-import { ApiService } from "./../api.service";
-import { Component, OnInit } from "@angular/core";
-import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
-import { AlertsComponent } from "../../notifications/alerts/alerts.component";
+import { ApiService } from './../api.service';
+import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertsComponent } from '../../notifications/alerts/alerts.component';
 
 @Component({
-  selector: "app-upload",
-  templateUrl: "./upload.component.html",
-  styleUrls: ["./upload.component.css"],
+  selector: 'app-upload',
+  templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.css'],
 })
 export class UploadComponent implements OnInit {
   fileToUpload: File;
   apiAlert = {
-    type: "",
-    message: "",
+    type: '',
+    message: '',
     timeout: 0,
     display: false,
     dismissible: true,
@@ -31,24 +31,24 @@ export class UploadComponent implements OnInit {
     console.log(form);
     this.api.uploadFile(this.fileToUpload).subscribe(
       (success) => {
-        console.log("success", success);
+        console.log('success', success);
         this.showMessage(
-          "success",
-          "File uploaded successfully!",
+          'success',
+          'File uploaded successfully!',
           10000,
           true
         );
       },
       (error) => {
-        console.log("error", error);
+        console.log('error', error);
         this.showMessage(
-          "danger",
-          "Error uploading file! " + error.message,
+          'danger',
+          'Error uploading file! ' + error.message,
           30000,
           true
         );
       },
-      () => console.log("done")
+      () => console.log('done')
     );
   }
 
