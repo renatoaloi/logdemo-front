@@ -7,15 +7,15 @@
       <table class="table table-responsive-sm table-striped">
         <thead>
           <tr>
-            <th>Date/Hour</th>
-            <th>File name</th>
-            <th>Upload Status</th>
-            <th>Processing Status</th>
-            <th></th>
+            <th scope="col">Date/Hour</th>
+            <th scope="col">File name</th>
+            <th scope="col">Upload Status</th>
+            <th scope="col">Processing Status</th>
+            <th scope="col"></th>
           </tr>
         </thead>
-        <tbody *ngFor="let file of files">
-          <tr>
+        <tbody>
+          <tr *ngFor="let file of files">
             <td>{{ file.dateCreated | date: "dd/MM/yyyy HH:mm:ss" }}</td>
             <td>{{ file.fileName }}</td>
             <td>

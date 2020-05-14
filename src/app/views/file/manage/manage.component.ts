@@ -1,14 +1,15 @@
-import { ApiService } from "../api.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { ApiService } from '../api.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
-  templateUrl: "./manage.component.html",
-  styleUrls: ["./manage.component.css"],
+  templateUrl: './manage.component.html',
+  styleUrls: ['./manage.component.css'],
 })
 export class ManageComponent implements OnInit {
   public files;
   public file;
+  public size;
 
   @ViewChild('modalViewLabel') public modalViewLabel: ModalDirective;
 
@@ -18,10 +19,10 @@ export class ManageComponent implements OnInit {
     this.modalViewLabel.show();
     console.log(id);
     this.api.get(id).subscribe(
-      (success) => { console.log("ok", success); this.file = success; },
-      (error) => { console.log("error", error); },
+      (success) => { console.log('ok', success); this.file = success; },
+      (error) => { console.log('error', error); },
       () => {
-        console.log("done");
+        console.log('done');
       }
     );
   }
@@ -31,14 +32,33 @@ export class ManageComponent implements OnInit {
   }
 
   getList() {
+    this.api.getCount().subscribe(
+      (data) => {
+        console.log('data', data);
+        this.size = JSON.parse(data);
+      },
+      (err) => console.error(err),
+      () => {
+        console.log('DONE!', this.files);
+      }
+    );
+
     this.api.getList().subscribe(
       (data) => {
         this.files = data;
       },
       (err) => console.error(err),
       () => {
-        console.log("DONE!", this.files);
+        console.log('DONE!', this.files);
       }
     );
+  }
+
+  onNext() {
+
+  }
+
+  onPrev() {
+
   }
 }
